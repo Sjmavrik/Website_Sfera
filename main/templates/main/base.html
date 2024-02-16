@@ -1,4 +1,6 @@
 {% load static %}
+{% load goodstags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +42,7 @@
                     Категории
                   </a>
                   <ul class="dropdown-menu">
+                    {% teg_category as categorys %}
                     {% for category in categorys %}
                       <li><a class="dropdown-item" href="#">{{category.name}}</a></li>   
                     {% endfor %}
@@ -53,16 +56,21 @@
 
     <section>
       <!--Блок контента-->
-      <div class='container'>
-        <div class='row-mt-1'>
-          <div class='col-lg-2'>
+      <div class='container-fluid mt-4'>
+        <div class='row'>
+          <div class='col-lg-1'>
             <!--пустой блок-->
           </div>
           <div class='col-lg-10'>
             <!--Контент на странице-->
-            {% block content %}
-            {% endblock content %}
-          </div>          
+            <div class="row">
+              {% block content %}
+              {% endblock content %}
+            </div>
+          </div> 
+          <div class="col-lg-1">
+            <!--пустой контенер с рекламой-->
+          </div>         
         </div>
       </div>
     </section>
