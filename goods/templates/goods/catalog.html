@@ -13,7 +13,7 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text">{{product.description}}</p>
-          <a href="#" class="btn btn-primary">подробнее</a>
+          <a href="{% url "catalog:product" product.slug %}" class="btn btn-primary">подробнее</a>
         </div>
     </div>
   </div>

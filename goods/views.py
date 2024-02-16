@@ -15,5 +15,12 @@ def catalog(request):
     return render(request, 'goods/catalog.html', context)
 
 
-def product(request):
-    return render()
+def product(request, poduct_slug):
+
+    product = Products.objects.get(slug=poduct_slug)
+
+    context = {
+        'product': product
+    }
+
+    return render(request, 'goods/product.html', context=context)

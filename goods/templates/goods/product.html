@@ -1,2 +1,22 @@
 {% extends "main/base.html" %}
 {% load static %}
+
+{% block content %}
+    <div class='container mt-5'>
+        <div class='card mb-4'>
+            <div class='row'>
+                <!--Миниатюры-->
+                <div class='col-md-4'>
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{product.name}}">
+                    {% else %}
+                        <img src="{% static "main/img/image_not_foutd.jpg" %}" class="card-img-top" alt="{{product.name}}">
+                    {% endif %}
+                </div>
+                <div class=col-md-4>
+                    <p>{{ product.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
