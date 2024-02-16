@@ -28,9 +28,6 @@
                     <a class="nav-link" href="{% url "main:about" %}">Про нас</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url "catalog:index" %}">Каталог</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="#">Контакты</a>
                   </li>                  
                   <li class="nav-item">
@@ -44,7 +41,7 @@
                   <ul class="dropdown-menu">
                     {% teg_category as categorys %}
                     {% for category in categorys %}
-                      <li><a class="dropdown-item" href="#">{{category.name}}</a></li>   
+                      <li><a class="dropdown-item" href="{% url "catalog:index" category.slug%}">{{category.name}}</a></li>   
                     {% endfor %}
                   </ul>
                 </li>                 
