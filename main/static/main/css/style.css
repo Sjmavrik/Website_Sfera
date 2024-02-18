@@ -1,0 +1,19 @@
+body {
+    background: rgb(246, 246, 246) url('../img/background.JPG');
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    backdrop-filter: blur(3px);
+}
+
+@media(max-width: 991px){
+    .sidebar{
+        background-color: rgba(246, 246, 246, 0.8);
+        backdrop-filter: blur(3px);
+    }
+}
+
+.offcanvas-header{
+    border-bottom-color: red;
+}

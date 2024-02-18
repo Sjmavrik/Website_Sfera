@@ -8,7 +8,7 @@ def index(request):
 
     context = {
         'title': 'Главная', 
-        'content': 'Группа компания СФЕРА', 
+        'content': 'Группа компаний СФЕРА', 
     }  
           
     return render(request, 'main/index.html', context)
@@ -22,3 +22,13 @@ def about(request):
     }
     
     return render(request, 'main/about.html', context)
+
+
+def contact(request):
+    context = {
+        'title': 'Контакты', 
+        'content': 'контакты',
+        'text_on_page': 'Контакты компании'
+    }
+    
+    return render(request, 'main/contact.html', context)
