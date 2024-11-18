@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 from goods.models import Category
@@ -27,7 +26,7 @@ def about(request):
 def contact(request):
     context = {
         'title': 'Контакты', 
-        'content': 'контакты',
+        'content': 'Контакты',
         'text_on_page': 'Контакты компании'
     }
     

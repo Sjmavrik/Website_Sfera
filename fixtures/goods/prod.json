@@ -1,0 +1,58 @@
+[
+    {
+        "model": "goods.products",
+        "pk": 1,
+        "fields": {
+            "name": "Оптимакс",
+            "slug": "optimaks",
+            "description": "Описание оптимакса",
+            "image": "",
+            "price": "800.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 2,
+        "fields": {
+            "name": "Эдель",
+            "slug": "edel",
+            "description": "Описание Эдель",
+            "image": "",
+            "price": "500.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 3,
+        "fields": {
+            "name": "Экохлор",
+            "slug": "ekohlor",
+            "description": "Описание Экохлор",
+            "image": "",
+            "price": "300.00",
+            "discount": "0.00",
+            "quantity": 6,
+            "category": 4
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 4,
+        "fields": {
+            "name": "Диаспрей",
+            "slug": "diasprej",
+            "description": "Описание диаспрей",
+            "image": "",
+            "price": "700.00",
+            "discount": "0.00",
+            "quantity": 12,
+            "category": 5
+        }
+    }
+]
