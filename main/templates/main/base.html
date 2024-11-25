@@ -1,5 +1,5 @@
 {% load static %}
-{% load goodstags %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,96 +9,26 @@
     <link rel="stylesheet" href={% static "main/css/bootstrap.min.css" %}>
     <link rel="stylesheet" href={% static "main/css/style.css" %}>
     <title>{{title}}</title>
+    <link rel="icon" href={% static "main/img/logo_title.PNG" %}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body class="vh-100 overflow-hidden">
     <header>
-        <!--Навигация-->
-        <nav class="navbar navbar-expand-lg navber-dark bg-transparent">
-          <div class="container">
-            <!--Логотип-->
-            <a class="navbar-brand" href="{% url "main:index" %}">
-              <img src="{% static "main/img/logo.PNG" %}" alt="logo" width="300" >
-            </a>
-            <!--Кнопка сворачивания меню-->
-            <button 
-              class="navbar-toggler shadow-none border-0" 
-              type="button" 
-              data-bs-toggle="offcanvas" 
-              data-bs-target="#offcanvasNavbar" 
-              aria-controls="offcanvasNavbar" 
-              aria-label="Toggle navigation">
-
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <!--Боковая Панель-->
-            <div 
-              class="sidebar offcanvas offcanvas-start" 
-              tabindex="-1" 
-              id="offcanvasNavbar" 
-              aria-labelledby="offcanvasNavbarLabel">
-            <!--Боковая Панель шапка-->
-              <div class="offcanvas-header text-secondary border-bottom border-secondary">
-                <h5 class="offcanvas-title" 
-                id="offcanvasNavbarLabel">Offcanvas</h5>
-                <button 
-                  type="button" 
-                  class="btn-close shadow-none" 
-                  data-bs-dismiss="offcanvas" 
-                  aria-label="Close">
-                </button>
-              </div>
-              <!--Боковая панель Тело-->
-              <div class="offcanvas-body d-flex flex-column flex-lg-row p-4">
-                <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url "main:index" %}">Главная</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url "main:about" %}">Про нас</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url "main:contact" %}">Контакты</a>
-                  </li>                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url "admin:index" %}">Админка</a>
-                  </li> 
-                  <!--Выпадающее меню-->
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Каталог
-                    </a>
-                    <ul class="dropdown-menu">
-                      {% teg_category as categorys %}
-                      {% for category in categorys %}
-                        <li><a class="dropdown-item" href="{% url "catalog:index" category.slug%}">{{category.name}}</a></li>   
-                      {% endfor %}
-                    </ul>
-                  </li>
-                </ul>
-                <!--Страка поиска и кнопка-->
-                <!--<form class="d-flex mt-3" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>-->
-                <!--Логин / Войти-->
-                <div class="d-flex flex-column justify-content-center align-items-center gap-3">
-                  <a href="#" 
-                  class="text-white text-decoration-none px-3 py-1 bg-secondary rounded-5"
-                  >Войти</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+      {% include "main/navigate.html" %}  
+      <!--Навигация-->
+       
     </header>
 
     <section>      
       <!--Блок контента-->
-      <div class='container-fluid mt-4'>
+      <div class='container-fluid overflow-hidden text-center mt-4'>
         <div class='row'>
           <div class='col-lg-2'>
-           
+            <!--Контент левой колонки-->
+            <div class="row">
+              {% block content_left_col %}
+              {% endblock content_left_col %}
+            </div>
           </div>
           <div class='col-lg-8'>
             <!--Контент на странице-->

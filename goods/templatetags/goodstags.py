@@ -1,6 +1,7 @@
 from django import template
 
 from goods.models import Category
+from main.models import Navigate
 
 
 register = template.Library()
