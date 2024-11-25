@@ -42,7 +42,6 @@
       </a>
     </li>
     {% for page in goods.paginator.page_range %}
-    
       <li class="page-item {% if goods.number == page %} active {% endif %}">
         <a class="page-link" href="?page={{page}}">{{ page }}</a>
       </li>
