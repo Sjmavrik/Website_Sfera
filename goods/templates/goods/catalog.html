@@ -1,19 +1,27 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block content_left_col %}
-   
-    <div class="row">
-      <h2>Фильтр</h2>
-    </div>
-    <div class="row">
+{% block content_left_col %} 
+  <div class="container mx-2 pt-2">
+
+    <form action="" metod="get" class="form-menu">
+      <p class="text mx-3 mt-3">Фильтр</p>
+      <div class="form-check  mx-4">
+        <input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on">
+        {% comment "" %}<input type="hidden" name="q" value="request.GET.q">{% endcomment %}
+        <label class="form-check-label" for="flexCheckDefault">
+          Товары по акции
+        </label>
+      </div>
+    </form>      
+  </div>
       
-    </div>
+    
 {% endblock content_left_col %}
 
 {% block content %}
   {% for product in goods %}
-    <div class='col-lg-4 col-md-6 p-4'>
+    <div class='col-lg-3 col-md-6 p-2'>
       <div class="card">
         {% if product.image %}
           <img src="{{ product.image.url }}" class="card-img-top" alt="{{product.name}}">

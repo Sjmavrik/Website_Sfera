@@ -17,3 +17,11 @@ body {
 .offcanvas-header{
     border-bottom-color: red;
 }
+.form-check-input{
+    border: 2px solid #0aa8d4;
+}
+
+.form-menu{
+    border: 2px solid #0aa8d4;
+    border-radius: 10px;
+}

@@ -13,7 +13,7 @@ def catalog(request, category_slug):
     else:
         goods = get_list_or_404(Products.objects.filter(category__slug=category_slug))
 
-    paginator = Paginator(goods, 3)
+    paginator = Paginator(goods, 4)
     current_page = paginator.get_page(page)
 
     context = {
