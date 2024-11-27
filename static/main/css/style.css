@@ -18,10 +18,17 @@ body {
     border-bottom-color: red;
 }
 .form-check-input{
-    border: 2px solid #0aa8d4;
+    border: 2px solid #494a4b;
 }
 
 .form-menu{
-    border: 2px solid #0aa8d4;
+    border: 2px solid #494a4b;
     border-radius: 10px;
+}
+
+.btn{
+    background-color: #0eca24;
+    border: 2px solid #0eca24;
+    font-size: 13px;
+    color:rgb(255, 255, 255);    
 }

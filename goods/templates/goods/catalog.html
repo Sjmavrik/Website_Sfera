@@ -1,18 +1,39 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load goodstags %}
 
 {% block content_left_col %} 
   <div class="container mx-2 pt-2">
 
-    <form action="" metod="get" class="form-menu">
+    <form action="{% url "catalog:index" slug_url%}" metod="get" class="form-menu">
       <p class="text mx-3 mt-3">Фильтр</p>
-      <div class="form-check  mx-4">
-        <input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on">
+      <div class="form-check  mx-5">
+        <input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" 
+        {% if request.GET.on_sele == "on" %}checked{% endif %} disabled>
         {% comment "" %}<input type="hidden" name="q" value="request.GET.q">{% endcomment %}
         <label class="form-check-label" for="flexCheckDefault">
           Товары по акции
         </label>
       </div>
+      <p class="text mx-3 mt-3">Сортировка по цене</p>
+      <div class="form-check  mx-5">
+        <input class="form-check-input" type="radio" name="order" id="flexRadioDefault1" value="-price" 
+        {% if request.GET.order == "-price" %}checked{% endif %}>
+        {% comment "" %}<input type="hidden" name="q" value="request.GET.q">{% endcomment %}
+        <label class="form-check-label" for="flexRadioDefault1">
+          по убыванию
+        </label>
+      </div>
+      <div class="form-check mx-5 mt-3">
+        <input class="form-check-input" type="radio" name="order" id="flexRadioDefault2" value="price" {% if request.GET.order == "price" %}checked{% endif %}>
+        {% comment "" %}<input type="hidden" name="q" value="request.GET.q">{% endcomment %}
+        <label class="form-check-label" for="flexRadioDefault2">
+          по возрастанию
+        </label>
+      </div>
+      <p class="text mx-3 mt-3"></p>
+      <button type="submit" class="btn btn-primary mx-5 mt-3">Применить</button>
+      <p class="text mx-3 mt-3"></p>
     </form>      
   </div>
       
@@ -31,7 +52,8 @@
           <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">{{product.description}}</p>
-            <a href="{% url "catalog:product" product.slug %}" class="btn btn-primary">Подробнее</a>
+            <p class="card-text">Цена: {{product.price}} руб</p>
+            <a href="{% url "catalog:product" product.slug %}" class="btn btn-outline-success">Подробнее</a>
           </div>
       </div>
     </div>
@@ -41,25 +63,23 @@
   <ul class="pagination justify-content-center pagination-lg">
     <li class="page-item {% if not goods.has_previous %} disabled {% endif %}">
       <a class="page-link" href="
-      {% if goods.has_previous %}
-      ?page={{goods.previous_page_number}}
-      {% else %}
+      {% if goods.has_previous %}?{% change_params page=goods.previous_page_number %}{% else %}
       #
       {% endif %}" aria-label="Previous">
       <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     {% for page in goods.paginator.page_range %}
+    {% if page >= goods.number|add:-2 and page <= goods.number|add:2 %}
       <li class="page-item {% if goods.number == page %} active {% endif %}">
-        <a class="page-link" href="?page={{page}}">{{ page }}</a>
+        <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
       </li>
+    {% endif %}
     {% endfor %}
     
     <li class="page-item {% if not goods.has_next %} disabled {% endif %}">
       <a class="page-link" href="
-      {% if goods.has_next %}
-      ?page={{goods.next_page_number}}
-      {% else %}
+      {% if goods.has_next %}?{% change_params page=goods.previous_page_number %}{% else %}
       #
       {% endif %}" aria-label="Next">
       <span aria-hidden="true">&raquo;</span>

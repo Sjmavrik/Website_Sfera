@@ -6,12 +6,17 @@ from goods.models import Category, Products
 
 def catalog(request, category_slug):
 
-    page = request.GET.get("page")
+    page = request.GET.get("page", 1)
+    on_sale = request.GET.get("on_sale", None)
+    order = request.GET.get("order", None)
 
     if category_slug == "all":
         goods = Products.objects.all()
     else:
         goods = get_list_or_404(Products.objects.filter(category__slug=category_slug))
+
+    if order:
+        goods = goods.order_by(order)
 
     paginator = Paginator(goods, 4)
     current_page = paginator.get_page(page)
